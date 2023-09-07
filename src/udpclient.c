@@ -140,7 +140,7 @@ int udpclient(int argc, char* argv[])
     memset(&src, 0, sizeof(struct sockaddr_in));
     hp = gethostbyname(phost);
     if (!hp) {
-        printf("Couldn't resolve server address: '%s': %s\n", phost, hstrerror(h_errno));
+        printf("Couldn't resolve server address: '%s': %s\n", phost, strerror(h_errno));
         return 1;
     }
     timeexc_ip            = *(uint32_t*)hp->h_addr_list[0];
