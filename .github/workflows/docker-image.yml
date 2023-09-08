@@ -16,7 +16,7 @@ jobs:
       run: docker build . --file Dockerfile --tag pwnatbuilder
     - run: mkdir src/output
     - name: Run the built image
-      run: docker run -it -v ./src/output:/src/output pwnatbuilder
+      run: docker run -t -v ./src/output:/src/output pwnatbuilder
     - name: Upload the compiled binary
       uses: actions/upload-artifact@v3
       with:
