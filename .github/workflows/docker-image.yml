@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+# on:
+#   push:
+#     branches: [ "master" ]
+#   pull_request:
+#     branches: [ "master" ]
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: mkdir src/output
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag pwnatbuilder
+    - name: Run the built image
+      run: docker run -it -v ./src/output:/src/output pwnatbuilder
+    - name: Upload the compiled binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: src/output/pwnat.exe
