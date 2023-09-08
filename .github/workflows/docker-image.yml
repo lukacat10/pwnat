@@ -20,5 +20,5 @@ jobs:
     - name: Upload the compiled binary
       uses: actions/upload-artifact@v3
       with:
-        name: my-artifact
+        name: pwnat-windows
         path: src/output/pwnat.exe
